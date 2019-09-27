@@ -2,6 +2,12 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import JobIndex from "@/components/JobIndex";
 import JobList from "@/components/JobList";
+import JobLogin from "@/components/JobLogin";
+import JobAdmin from "@/components/JobAdmin";
+import AdminList from "@/components/admin/AdminList";
+import AddJob from "@/components/admin/AddJob";
+import ChangePwd from "@/components/admin/ChangePwd";
+import AdminType from "@/components/admin/AdminType";
 
 Vue.use(Router)
 
@@ -16,6 +22,33 @@ export default new Router({
       path: '/JobList',
       name: 'JobList',
       component: JobList
+    },
+    {
+      path: '/JobLogin',
+      name: 'JobLogin',
+      component: JobLogin
+    },
+    {
+      path: '/JobAdmin',
+      name: 'JobAdmin',
+      component: JobAdmin,
+      children: [{
+        path: 'AdminList',
+        name: 'AdminList',
+        component: AdminList
+      },{
+        path: 'AddJob',
+        name: 'AddJob',
+        component: AddJob
+      },{
+        path: 'ChangePwd',
+        name: 'ChangePwd',
+        component: ChangePwd
+      },{
+        path: 'AdminType',
+        name: 'AdminType',
+        component: AdminType
+      }]
     }
   ]
 })
