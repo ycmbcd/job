@@ -17,10 +17,10 @@
           <td>{{item.job_type}}</td>
           <td>
             <span class="c_blue">
-              <at-button size="smaller" icon="icon-edit">编辑</at-button>
+              <at-button size="smaller" icon="icon-edit" @click="change_modal(item.job_type)">编辑</at-button>
             </span>&nbsp;&nbsp;
             <span class="c_red">
-              <at-button size="smaller" icon="icon-trash-2">删除</at-button>
+              <at-button @click="del_modal(item.job_type)" size="smaller" icon="icon-trash-2">删除</at-button>
             </span>
           </td>
         </tr>
@@ -40,26 +40,98 @@ export default {
       all_type: []
     };
   },
-  mounted: function(){
-      this.get_type();
+  mounted: function() {
+    this.get_type();
   },
   methods: {
-      // 查询部门
-      get_type: function(){
-          var _this = this;
-          axios
-          .get("http://job.cc/type.php", {
-            params: {
-              get_type: 'all'
-            }
+    // 删除部门
+    del_type: function(txt) {
+      var _this = this;
+      axios
+        .get("http://job.cc/type.php", {
+          params: {
+            del_type: txt
+          }
+        })
+        .then(function(res) {
+          if (res.data == "ok") {
+            _this.$Message("已删除「" + txt + "」");
+            _this.get_type();
+          } else {
+            _this.$Message("删除失败");
+          }
+        })
+        .catch(function(error) {
+          console.log(error);
+        });
+    },
+    // 修改模态框
+    change_modal(txt) {
+      if (txt == "") {
+        _this.$Message("不能为空");
+      } else {
+        var _this = this;
+        this.$Modal
+          .prompt({
+            title: "「" + txt + "」将修改为："
           })
-          .then(function(res) {
-              _this.all_type = res.data;
+          .then(data => {
+            axios
+              .get("http://job.cc/type.php", {
+                params: {
+                  change_type: txt,
+                  change_new_type: `${data.value}`
+                }
+              })
+              .then(function(res) {
+                if (res.data == "ok") {
+                  _this.$Message("已修改为「" + `${data.value}` + "」");
+                  _this.get_type();
+                  _this.new_type = '';
+                } else {
+                  _this.$Message("修改失败");
+                }
+              })
+              .catch(function(error) {
+                console.log(error);
+              });
           })
-          .catch(function(error) {
-            console.log(error);
+          .catch(() => {
+            this.$Message("点击了「取消」按钮");
           });
-      },
+      }
+    },
+    // 删除模态框
+    del_modal(txt) {
+      var _this = this;
+      this.$Modal
+        .confirm({
+          title: "警告",
+          content: "您将删除「" + txt + "」，您确定要这么做吗？"
+        })
+        .then(() => {
+          _this.del_type(txt);
+        })
+        .catch(() => {
+          this.$Message("已「取消」");
+        });
+    },
+    // 查询部门
+    get_type: function() {
+      var _this = this;
+      axios
+        .get("http://job.cc/type.php", {
+          params: {
+            get_type: "all"
+          }
+        })
+        .then(function(res) {
+          _this.all_type = res.data;
+        })
+        .catch(function(error) {
+          console.log(error);
+        });
+    },
     // 添加一个部门
     add_type: function() {
       var _this = this;
@@ -83,19 +155,20 @@ export default {
           })
           .then(function(res) {
             if (res.data == "ok") {
-                _this.get_type();
-            }else if(res.data == "has"){
-                const Toast = Vue.swal.mixin({
-                    toast: true,
-                    position: "top-end",
-                    showConfirmButton: false,
-                    timer: 3000
-                });
-                Toast.fire({
-                    type: "info",
-                    title: "已存在此部门。"
-                });
-            }else{
+              _this.get_type();
+              _this.new_type = "";
+            } else if (res.data == "has") {
+              const Toast = Vue.swal.mixin({
+                toast: true,
+                position: "top-end",
+                showConfirmButton: false,
+                timer: 3000
+              });
+              Toast.fire({
+                type: "info",
+                title: "已存在此部门。"
+              });
+            } else {
               const Toast = Vue.swal.mixin({
                 toast: true,
                 position: "top-end",
@@ -117,7 +190,7 @@ export default {
 };
 </script>
 
-<style>
+<style sccoped>
 .j_table {
   width: 100%;
   border-collapse: collapse;
@@ -135,5 +208,8 @@ export default {
 }
 .j_table .icon {
   padding-right: 0px;
+}
+.at-modal{
+    width: 300px !important;
 }
 </style>

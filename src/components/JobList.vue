@@ -1,61 +1,19 @@
 <template>
-  <div class="j_panel">
+  <div class="j_panel col-md-20 auto">
     <table class="j_table">
       <tr class="j_th">
-        <td>职位编号</td>
+        <td width="10%" class="tagc">职位编号</td>
         <td>部门</td>
         <td>职位名</td>
-        <td>招聘人数</td>
-        <td>发布日期</td>
+        <td class="tagc">招聘人数</td>
+        <td width="20%">发布日期</td>
       </tr>
-      <tr>
-        <td>1</td>
-        <td>总务</td>
-        <td><a href="#">资料管理员岗位</a></td>
-        <td>2</td>
-        <td>2019-09-27</td>
-      </tr>
-      <tr>
-        <td>1</td>
-        <td>总务</td>
-        <td><a href="#">资料管理员岗位</a></td>
-        <td>2</td>
-        <td>2019-09-27</td>
-      </tr>
-      <tr>
-        <td>1</td>
-        <td>总务</td>
-        <td><a href="#">资料管理员岗位</a></td>
-        <td>2</td>
-        <td>2019-09-27</td>
-      </tr>
-      <tr>
-        <td>1</td>
-        <td>总务</td>
-        <td><a href="#">资料管理员岗位</a></td>
-        <td>2</td>
-        <td>2019-09-27</td>
-      </tr>
-      <tr>
-        <td>1</td>
-        <td>总务</td>
-        <td><a href="#">资料管理员岗位</a></td>
-        <td>2</td>
-        <td>2019-09-27</td>
-      </tr>
-      <tr>
-        <td>1</td>
-        <td>总务</td>
-        <td><a href="#">资料管理员岗位</a></td>
-        <td>2</td>
-        <td>2019-09-27</td>
-      </tr>
-      <tr>
-        <td>1</td>
-        <td>总务</td>
-        <td><a href="#">资料管理员岗位</a></td>
-        <td>2</td>
-        <td>2019-09-27</td>
+      <tr v-for="(item,index) in all_jobs" :key="index">
+        <td class="tagc">{{item.id}}</td>
+        <td>{{item.job_type}}</td>
+        <td>{{item.job_name}}</td>
+        <td class="tagc">{{item.need_num}}</td>
+        <td>{{item.ct_time}}</td>
       </tr>
     </table>
     <div class="f_right mt20">
@@ -66,8 +24,37 @@
 </template>
 
 <script>
+import axios from "axios";
+import Vue from "vue";
+
 export default {
- 
+  name: "JobList",
+  data() {
+    return {
+      all_jobs: []
+    };
+  },
+  mounted: function() {
+    this.get_jobs();
+  },
+  methods: {
+    // 获取所有职位
+    get_jobs: function() {
+      var _this = this;
+      axios
+        .get("http://job.cc/job.php", {
+          params: {
+            get_jobs: "get"
+          }
+        })
+        .then(function(res) {
+          _this.all_jobs = res.data;
+        })
+        .catch(function(error) {
+          console.log(error);
+        });
+    }
+  }
 };
 </script>
 <style>

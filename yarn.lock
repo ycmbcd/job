@@ -5596,7 +5596,7 @@ svgo@^1.0.0:
     unquote "~1.1.1"
     util.promisify "~1.0.0"
 
-sweetalert2@8.x:
+sweetalert2@8.x, sweetalert2@^8.17.6:
   version "8.17.6"
   resolved "https://registry.yarnpkg.com/sweetalert2/-/sweetalert2-8.17.6.tgz#80ae892cced06cfb03e6152bfa78e238c24db9be"
 
@@ -5932,6 +5932,11 @@ vue-router@^2.8.1:
 vue-router@^3.0.1:
   version "3.1.3"
   resolved "https://registry.yarnpkg.com/vue-router/-/vue-router-3.1.3.tgz#e6b14fabc0c0ee9fda0e2cbbda74b350e28e412b"
+
+vue-select@^3.2.0:
+  version "3.2.0"
+  resolved "https://registry.yarnpkg.com/vue-select/-/vue-select-3.2.0.tgz#c72166cb1f976d76cd612cde25fc8ef29f7914f5"
+  integrity sha512-FfARbDuJWQNpYm6X9zPWCsYXmz33TNR2oqY8FktKRVksKfp1tZPqL9g+/7wgsaMaqUxcIxYEUVV7C3AD+H5cxA==
 
 vue-style-loader@^3.0.0:
   version "3.1.2"

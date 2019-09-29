@@ -36,6 +36,9 @@ body{
 #job_view {
   margin: 10px 40px;
 }
+.mt10{
+  margin-top:10px;
+}
 .mt20{
   margin-top:20px;
 }

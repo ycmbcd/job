@@ -57,7 +57,7 @@ export default {
         })
         .then(function(res) {
           if (res.data == "bye") {
-             _this.$router.replace("/");
+            _this.$router.replace("/");
           }
         })
         .catch(function(error) {
@@ -106,9 +106,9 @@ export default {
 </script>
 
 <style>
-.logout_hr{
-    margin: 0 10px 10px 0;
-    background: #dee9f2;
-    height: 1px;
+.logout_hr {
+  margin: 0 10px 10px 0;
+  background: #dee9f2;
+  height: 1px;
 }
 </style>
