@@ -11,20 +11,25 @@
             </at-menu-item>
             <at-menu-item name="2">
               <router-link to="/JobAdmin/AdminList">
-                <i class="icon icon-list"></i>职位列表管理
+                <i class="icon icon-list"></i>职位列表
               </router-link>
             </at-menu-item>
             <at-menu-item name="3">
+              <router-link to="/JobAdmin/ViewResume">
+                <i class="icon icon-eye"></i>简历查看
+              </router-link>
+            </at-menu-item>
+            <at-menu-item name="4">
               <router-link to="/JobAdmin/AdminType">
                 <i class="icon icon-tag"></i>部门管理
               </router-link>
             </at-menu-item>
-            <at-menu-item name="4">
+            <at-menu-item name="5">
               <router-link to="/JobAdmin/ChangePwd">
                 <i class="icon icon-lock"></i>修改密码
               </router-link>
             </at-menu-item>
-            <at-menu-item name="5">
+            <at-menu-item name="6">
               <div @click="logout()">
                 <div class="logout_hr"></div>
                 <i class="icon icon-log-out"></i>退出系统
@@ -50,7 +55,7 @@ export default {
     logout: function() {
       var _this = this;
       axios
-        .get("http://job.cc/login.php", {
+        .get("http://job.cc/api/login.php", {
           params: {
             logout: "bye"
           }
@@ -69,7 +74,7 @@ export default {
       var _this = this;
       // axios.get("/api/login.php", {
       axios
-        .get("http://job.cc/login.php", {
+        .get("http://job.cc/api/login.php", {
           params: {
             check_login: "check"
           }

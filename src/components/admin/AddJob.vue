@@ -49,7 +49,7 @@ export default {
     add_job: function(){
       var _this = this;
       axios
-        .get("http://job.cc/job.php", {
+        .get("http://job.cc/api/job.php", {
           params: {
             add_job: "add",
             job_type: _this.job_type,
@@ -97,7 +97,7 @@ export default {
     get_type: function() {
       var _this = this;
       axios
-        .get("http://job.cc/type.php", {
+        .get("http://job.cc/api/type.php", {
           params: {
             get_type: "get"
           }

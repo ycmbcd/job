@@ -65,7 +65,7 @@ body{
 }
 .j_panel{
   background: #FFF;
-  padding: 20px;
+  padding: 40px;
   border-radius: 6px;
 }
 .c_blue{
@@ -73,6 +73,17 @@ body{
 }
 .c_red{
   color: #cc2222;
+}
+.weight{
+  font-weight: bold;
+}
+.hidden{
+  display: none;
+}
+.line{
+  height: 2px;
+  background: #edf1f6;
+  margin: 10px 0 20px 0;
 }
 body.swal2-toast-shown .swal2-container.swal2-top-end, body.swal2-toast-shown .swal2-container.swal2-top-right{
   top: 60px;

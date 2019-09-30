@@ -28,7 +28,7 @@
         </td>
       </tr>
     </table>
-    <at-button class="mt10" type="primary" :disabled="check_box == ''" @click="down_send()">下载投递简历</at-button>
+    <at-button class="mt10" type="primary" :disabled="check_box == ''" @click="down_resume()">下载投递简历</at-button>
   </div>
 </template>
 
@@ -49,15 +49,28 @@ export default {
   },
   methods: {
     // 下载职位简历
-    down_send: function() {
+    down_resume: function() {
       var _this = this;
-      console.log(_this.check_box);
+      axios
+        .get("http://job.cc/api/job.php", {
+          params: {
+            down_resume: _this.check_box
+          }
+        })
+        .then(function(res) {
+          if(res.data == 'ok'){
+            window.open('http://job.cc/api/../down/download.zip');
+          }
+        })
+        .catch(function(error) {
+          console.log(error);
+        });
     },
     // 获取所有职位
     get_jobs: function() {
       var _this = this;
       axios
-        .get("http://job.cc/job.php", {
+        .get("http://job.cc/api/job.php", {
           params: {
             get_jobs: "get"
           }

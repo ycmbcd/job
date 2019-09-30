@@ -45,7 +45,7 @@ export default {
         login: function() {
             var _this = this;
             // axios.get("/api/login.php", {
-            axios.get("http://job.cc/login.php", {
+            axios.get("http://job.cc/api/login.php", {
                 params: {
                     login: _this.login_pwd
                 }

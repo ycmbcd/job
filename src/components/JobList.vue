@@ -6,12 +6,12 @@
         <td>部门</td>
         <td>职位名</td>
         <td class="tagc">招聘人数</td>
-        <td width="20%">发布日期</td>
+        <td width="20%">发布时间</td>
       </tr>
       <tr v-for="(item,index) in all_jobs" :key="index">
         <td class="tagc">{{item.id}}</td>
         <td>{{item.job_type}}</td>
-        <td>{{item.job_name}}</td>
+        <td><router-link target="_blank" :to="{ name: 'JobShow', query: { job_id: item.id}}">{{item.job_name}}</router-link></td>
         <td class="tagc">{{item.need_num}}</td>
         <td>{{item.ct_time}}</td>
       </tr>
@@ -42,7 +42,7 @@ export default {
     get_jobs: function() {
       var _this = this;
       axios
-        .get("http://job.cc/job.php", {
+        .get("http://job.cc/api/job.php", {
           params: {
             get_jobs: "get"
           }

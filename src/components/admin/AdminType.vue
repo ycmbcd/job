@@ -48,7 +48,7 @@ export default {
     del_type: function(txt) {
       var _this = this;
       axios
-        .get("http://job.cc/type.php", {
+        .get("http://job.cc/api/type.php", {
           params: {
             del_type: txt
           }
@@ -77,7 +77,7 @@ export default {
           })
           .then(data => {
             axios
-              .get("http://job.cc/type.php", {
+              .get("http://job.cc/api/type.php", {
                 params: {
                   change_type: txt,
                   change_new_type: `${data.value}`
@@ -120,7 +120,7 @@ export default {
     get_type: function() {
       var _this = this;
       axios
-        .get("http://job.cc/type.php", {
+        .get("http://job.cc/api/type.php", {
           params: {
             get_type: "all"
           }
@@ -148,7 +148,7 @@ export default {
         });
       } else {
         axios
-          .get("http://job.cc/type.php", {
+          .get("http://job.cc/api/type.php", {
             params: {
               add_type: _this.new_type
             }
