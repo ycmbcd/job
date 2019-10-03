@@ -1,5 +1,11 @@
 <template>
   <div>
+    <div class="bread">
+      <at-breadcrumb separator=">">
+        <at-breadcrumb-item href="#/">首页</at-breadcrumb-item>
+        <at-breadcrumb-item>后台登录</at-breadcrumb-item>
+      </at-breadcrumb>
+    </div>
     <div class="j_login auto">
         <div class="j_box">
             <div class="login_txt">您好，请登录 ..</div>

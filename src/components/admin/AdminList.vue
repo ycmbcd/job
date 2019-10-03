@@ -2,10 +2,10 @@
   <div>
     <table class="j_table">
       <tr class="j_th">
-        <td class="tagc" width="6%"><i class="icon icon-check"></i></td>
+        <td class="tagc" width="6%">筛选</td>
         <td class="tagc" width="8%">职位 ID</td>
-        <td>部门</td>
-        <td>职位名称</td>
+        <td width="10%">部门</td>
+        <td width="27%">职位名称</td>
         <td width="20%">发布时间</td>
         <td class="tagc" width="8%">投递数</td>
         <td>职位操作</td>
@@ -21,10 +21,10 @@
         <td>{{item.job_name}}</td>
         <td>{{item.ct_time}}</td>
         <td class="tagc">{{item.receive_num}}</td>
-        <td>
-          查看
-          修改
-          删除
+        <td class="tagc">
+          <at-button class="weight" size="smaller" hollow type="success">查看</at-button>&nbsp;&nbsp;
+          <at-button class="weight" size="smaller" hollow type="primary">修改</at-button>&nbsp;&nbsp;
+          <at-button class="weight" size="smaller" hollow type="error">删除</at-button>
         </td>
       </tr>
     </table>
@@ -106,5 +106,8 @@ export default {
 }
 .at-modal {
   width: 300px !important;
+}
+.at-checkbox{
+  margin-left: 8px;
 }
 </style>

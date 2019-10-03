@@ -1,6 +1,12 @@
 <template>
   <div>
-    <div class="j_panel">
+    <div class="bread">
+      <at-breadcrumb separator=">">
+        <at-breadcrumb-item href="#/">首页</at-breadcrumb-item>
+        <at-breadcrumb-item>后台管理</at-breadcrumb-item>
+      </at-breadcrumb>
+    </div>
+    <div class="j_panel mt20">
       <div class="row at-row no-gutter">
         <div class="col-md-5">
           <at-menu mode="vertical" active-name="1">
@@ -38,7 +44,9 @@
           </at-menu>
         </div>
         <div class="col-md-18">
-          <router-view />
+          <transition name="fade">
+            <router-view />
+          </transition>
         </div>
       </div>
     </div>
@@ -115,5 +123,27 @@ export default {
   margin: 0 10px 10px 0;
   background: #dee9f2;
   height: 1px;
+}
+.fade-enter-active, .fade-leave-active {
+      transition: height .3s;
+  }
+/* 定义进入动画的初始状态*/
+.fade-enter {
+    height: 0;
+}
+
+/* 定义进入动画的结束状态*/
+.fade-enter-to {
+    height: 200px;
+}
+
+/* 定义离开动画的初始状态*/
+.fade-leave {
+    height: 200px;
+}
+
+/* 定义离开动画的结束状态*/
+.fade-leave-to {
+    height: 0;
 }
 </style>

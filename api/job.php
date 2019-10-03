@@ -175,7 +175,7 @@ if(isset($_GET['down_resume_person'])){
 
 // 所有简历查看
 if(isset($_GET['view_resume'])){
-    $sql = "SELECT * FROM resume_table";
+    $sql = "SELECT t1.resume_name AS resume_name,t2.job_name AS job_name,t2.job_type AS job_type FROM resume_table t1,job_table t2 WHERE t1.job_id = t2.id";
     $res = $db->getAll($sql);
     echo json_encode($res);
 }
@@ -185,3 +185,14 @@ if(isset($_GET['preview'])){
     $resume_name = addslashes($_GET['preview']);
     echo '<div style="margin:0 auto;width: 730px;"><img src="../down/jobs/'.$resume_name.'.png" /></div>';
 }
+
+// 下载简历表格
+// if(isset($_GET['down_resume_xlsx'])){
+//     $down_resume = $_GET['down_resume_xlsx'];
+//     $items = '';
+//     foreach($down_resume AS $val){
+//         $items = $items.'\''.$val.'\',';
+//     }
+//     $items = trim($items,',');
+//     echo $items;
+// }

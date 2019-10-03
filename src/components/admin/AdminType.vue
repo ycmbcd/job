@@ -10,12 +10,12 @@
     <div class="col-md-8">
       <table class="j_table mt20">
         <tr class="j_th">
-          <td>部 门</td>
-          <td>操 作</td>
+          <td width="40%" class="tagc">部 门</td>
+          <td class="tagc">操 作</td>
         </tr>
         <tr v-for="(item,index) in all_type" :key="index">
-          <td>{{item.job_type}}</td>
-          <td>
+          <td class="tagc">{{item.job_type}}</td>
+          <td class="tagc">
             <span class="c_blue">
               <at-button size="smaller" icon="icon-edit" @click="change_modal(item.job_type)">编辑</at-button>
             </span>&nbsp;&nbsp;

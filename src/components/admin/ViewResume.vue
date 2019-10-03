@@ -2,11 +2,11 @@
     <div>
         <table class="j_table">
             <tr class="j_th">
-                <td class="tagc" width="6%"><i class="icon icon-check"></i></td>
-                <td>投递人</td>
-                <td>投递岗位</td>
-                <td>部门</td>
-                <td>操作</td>
+                <td class="tagc" width="6%">筛选</td>
+                <td width="26%">投递人</td>
+                <td width="40%">投递岗位</td>
+                <td class="tagc">部门</td>
+                <td class="tagc">操作</td>
             </tr>
             <tr v-for="(item, index) in all_resume" :key="index">
                 <td class="tagc">
@@ -15,7 +15,9 @@
                     </at-checkbox-group>
                 </td>
                 <td>{{item.resume_name}}</td>
-                <td>
+                <td>{{item.job_name}}</td>
+                <td class="tagc">{{item.job_type}}</td>
+                <td class="tagc">
                     <at-button class="weight" type="success" size="smaller" @click="preview(item.resume_name)">
                         预览
                     </at-button>
@@ -23,7 +25,7 @@
             </tr>
         </table>
         <at-button class="mt10 weight" type="primary" :disabled="check_box == ''" @click="down_resume_person()">下载投递简历</at-button>&nbsp;&nbsp;
-        <at-button class="mt10 weight" type="success" :disabled="check_box == ''" >下载简历表格Excel</at-button>
+        <!-- <at-button class="mt10 weight" type="success" :disabled="check_box == ''" @click="down_resume_xlsx()">下载简历表格Excel</at-button> -->
     </div>
 </template>
 
@@ -74,8 +76,26 @@ export default {
           }
         })
         .then(function(res) {
-            console.log(res)
           _this.all_resume = res.data;
+        })
+        .catch(function(error) {
+          console.log(error);
+        });
+    },
+    // 下载简历表格
+    down_resume_xlsx: function(){
+      var _this = this;
+      axios
+        .get("http://job.cc/api/job.php", {
+          params: {
+            down_resume_xlsx: _this.check_box
+          }
+        })
+        .then(function(res) {
+          console.log(res.data)
+          if(res.data == 'ok'){
+            window.open('http://job.cc/api/../down/resume.xlsx');
+          }
         })
         .catch(function(error) {
           console.log(error);
@@ -102,5 +122,8 @@ export default {
 }
 .j_table .icon {
   padding-right: 0px;
+}
+.at-checkbox{
+  margin-left: 8px;
 }
 </style>

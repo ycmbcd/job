@@ -39,7 +39,7 @@
           </at-input>
           <at-input class="mt10" v-model="u_email" placeholder="请输入内容">
             <template slot="prepend">
-              <span>邮编</span>
+              <span>电子邮箱</span>
             </template>
           </at-input>
         </div>
