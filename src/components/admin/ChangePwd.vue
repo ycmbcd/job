@@ -4,7 +4,7 @@
             <at-input v-model="o_pwd" type="password" placeholder="原密码"></at-input>
             <at-input class="mt10" v-model="n_pwd" type="password" placeholder="新密码"></at-input>
             <at-input class="mt10" v-model="r_pwd" type="password" placeholder="确认新密码"></at-input>
-            <at-button class="mt20 f_right" size="small" type="error" @click="change_pwd()">修改密码</at-button>
+            <at-button class="mt20 f_right weight" size="small" type="error" @click="change_pwd()">修改密码</at-button>
             <div class="clear"></div>
         </div>
     </div>

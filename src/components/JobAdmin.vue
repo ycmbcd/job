@@ -1,12 +1,14 @@
 <template>
   <div>
-    <div class="bread">
-      <at-breadcrumb separator=">">
-        <at-breadcrumb-item href="#/">首页</at-breadcrumb-item>
-        <at-breadcrumb-item>后台管理</at-breadcrumb-item>
-      </at-breadcrumb>
+    <div class="col-md-20 auto">
+      <div class="bread">
+        <at-breadcrumb separator=">">
+          <at-breadcrumb-item href="#/">首页</at-breadcrumb-item>
+          <at-breadcrumb-item>后台管理</at-breadcrumb-item>
+        </at-breadcrumb>
+      </div>
     </div>
-    <div class="j_panel mt20">
+    <div class="j_panel mt20 col-md-20 auto">
       <div class="row at-row no-gutter">
         <div class="col-md-5">
           <at-menu mode="vertical" active-name="1">
@@ -43,10 +45,8 @@
             </at-menu-item>
           </at-menu>
         </div>
-        <div class="col-md-18">
-          <transition name="fade">
+        <div class="col-md-19" >
             <router-view />
-          </transition>
         </div>
       </div>
     </div>
@@ -56,6 +56,7 @@
 <script>
 import Vue from "vue";
 import axios from "axios";
+
 export default {
   name: "JobAdmin",
   methods: {
@@ -124,26 +125,10 @@ export default {
   background: #dee9f2;
   height: 1px;
 }
-.fade-enter-active, .fade-leave-active {
-      transition: height .3s;
-  }
-/* 定义进入动画的初始状态*/
-.fade-enter {
-    height: 0;
+.mt20{
+  margin-top:20px;
 }
-
-/* 定义进入动画的结束状态*/
-.fade-enter-to {
-    height: 200px;
-}
-
-/* 定义离开动画的初始状态*/
-.fade-leave {
-    height: 200px;
-}
-
-/* 定义离开动画的结束状态*/
-.fade-leave-to {
-    height: 0;
+.at-menu{
+  width: 180px !important;
 }
 </style>

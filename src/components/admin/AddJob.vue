@@ -2,7 +2,7 @@
   <div>
     <div class="col-md-6">
       <!-- 部门选择 -->
-      <div class="col-md-17">
+      <div class="col-md-20">
         <v-select v-model="job_type" :options="all_type" placeholder="请选择部门.."></v-select>
       </div>
 

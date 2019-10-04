@@ -12,7 +12,7 @@
         <at-breadcrumb-item>投递简历</at-breadcrumb-item>
       </at-breadcrumb>
     </div>
-    <div class="j_panel mt10">
+    <div class="j_panel mt20">
       <h1>
         您正在应聘
         <span class="c_blue">【{{this.$route.query.job_type}}】</span>的
@@ -82,7 +82,10 @@
             <div class="clear"></div>
             <div id="make_png">
                 <div id="t_resume_box">
+                    <div>投递岗位：【{{this.$route.query.job_type}}】 {{this.$route.query.job_name}}</div>
+                    <br>
                     <h1 class="tagc">{{ u_name }}的简历</h1>
+                    <br>
                     <table class="t_resume mt10">
                         <tr>
                             <td>姓名</td><td>{{ u_name }}</td>
@@ -230,8 +233,9 @@ export default {
 #t_resume_box{
   box-shadow: 0px 0px 10px #999;
   padding: 60px;
+  background: #FFF;
   margin: 20px;
-  background: #fdfdfd;
+  margin-top: 60px;
 }
 .t_resume {
   width: 100%;
@@ -257,6 +261,10 @@ export default {
     padding: 10px 20px;
     height: 500px;
     resize: none;
-    background: #f3f3f3;
+    background: rgba(9,9,9,.03);
 }
+.at-modal__footer{
+    display: none;
+}
+
 </style>

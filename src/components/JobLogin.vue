@@ -1,21 +1,25 @@
 <template>
   <div>
-    <div class="bread">
-      <at-breadcrumb separator=">">
-        <at-breadcrumb-item href="#/">首页</at-breadcrumb-item>
-        <at-breadcrumb-item>后台登录</at-breadcrumb-item>
-      </at-breadcrumb>
+    <div class="col-md-18 auto">
+        <div class="bread">
+        <at-breadcrumb separator=">">
+            <at-breadcrumb-item href="#/">首页</at-breadcrumb-item>
+            <at-breadcrumb-item>后台登录</at-breadcrumb-item>
+        </at-breadcrumb>
+        </div>
     </div>
+    <div class="col-md-18 auto j_panel mt20">
     <div class="j_login auto">
         <div class="j_box">
             <div class="login_txt">您好，请登录 ..</div>
-                <at-input type="password" v-model="login_pwd" placeholder="请输入内容" append-button>
+                <at-input type="password" v-model="login_pwd" placeholder="请输入内容" append-button @keyup.enter="login()">
                     <template slot="append">
                         <span @click="login()">登录</span>
                     </template>
                 </at-input>
             </div>
         </div>
+    </div>
   </div>
 </template>
 
@@ -23,8 +27,10 @@
 .j_login {
   width: 220px;
   height: 120px;
-  background:#d5e1f1;
-  border: 2px solid #fff;
+  margin-top:80px;
+  margin-bottom:180px;
+  background:#f3f3f3;
+  border: 1px solid #ddd;
   border-radius: 6px;
 }
 .login_txt {
@@ -46,6 +52,17 @@ export default {
         return{
             login_pwd: ''
         }
+    },
+    created() {
+        let _this = this;
+        // 回车登录
+        document.onkeypress = function(e) {
+        var keycode = document.all ? event.keyCode : e.which;
+            if (keycode == 13) {
+                _this.login();
+                return false;
+            }
+        };
     },
     methods: {
         login: function() {

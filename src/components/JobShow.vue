@@ -1,12 +1,14 @@
 <template>
   <div>
-    <div class="bread">
-      <at-breadcrumb separator=">">
-        <at-breadcrumb-item href="#/">首页</at-breadcrumb-item>
-        <at-breadcrumb-item>{{this.this_job.job_name}}</at-breadcrumb-item>
-      </at-breadcrumb>
+    <div class="col-md-20 auto">
+      <div class="bread">
+        <at-breadcrumb separator=">">
+          <at-breadcrumb-item href="#/">首页</at-breadcrumb-item>
+          <at-breadcrumb-item>{{this.this_job.job_name}}</at-breadcrumb-item>
+        </at-breadcrumb>
+      </div>
     </div>
-    <div class="j_panel col-md-20 auto">
+    <div class="j_panel mt20 col-md-20 auto">
         <div class="show_box">
           <h1><span>「职位{{this.$route.query.job_id}}」</span>{{this.this_job.job_name}}</h1>
           <hr>
@@ -16,7 +18,7 @@
           &nbsp;&nbsp;&nbsp;<textarea class="text_area" v-model="this.this_job.job_info" disabled></textarea>
           <div class="clear"></div>
           <router-link target="_blank" :to="{ name: 'JobSend', query: { job_id: this.$route.query.job_id, job_name: this.this_job.job_name, job_type: this.this_job.job_type}}">
-              <at-button class="mt20 f_right" type="success weight">投递简历</at-button>
+              <at-button class="mt20 f_right" size="large" type="success weight">投递简历</at-button>
           </router-link>
           <div class="clear"></div>
         </div>
@@ -59,6 +61,9 @@ export default {
 </script>
 
 <style>
+.mt20{
+  margin-top: 20px;
+}
 .text_area{
     width: 600px;
     margin-top: 10px;

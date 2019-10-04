@@ -10,6 +10,14 @@ function make_dir($dir){
     chmod ($dir, 0755);
 }
 
+// 删除一个职位
+if(isset($_GET['del_job'])){
+    $job_id = $_GET['del_job'];
+    $sql = "DELETE FROM job_table WHERE id = '{$job_id}'";
+    $res = $db->execute($sql);
+    echo 'ok';
+}
+
 // 添加一个职位
 if(isset($_GET['add_job'])){
     $job_type = addslashes($_GET['job_type']);

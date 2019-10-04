@@ -7,7 +7,7 @@
         </template>
       </at-input>
     </div>
-    <div class="col-md-8">
+    <div class="col-md-10">
       <table class="j_table mt20">
         <tr class="j_th">
           <td width="40%" class="tagc">部 门</td>
