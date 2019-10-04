@@ -23,6 +23,8 @@ if(isset($_GET['add_job'])){
     $job_type = addslashes($_GET['job_type']);
     $job_name = addslashes($_GET['job_name']);
     $need_num = addslashes($_GET['need_num']);
+    $job_edu = addslashes($_GET['job_edu']);
+    $job_money = addslashes($_GET['job_money']);
     $job_info = addslashes($_GET['job_info']);
     // 查询是否存在职位名
     $sql = "SELECT 1 FROM job_table WHERE job_name = '{$job_name}' AND job_type = '{$job_type}'";
@@ -32,7 +34,7 @@ if(isset($_GET['add_job'])){
         $sql = "SELECT id FROM job_type WHERE job_type = '{$job_type}'";
         $res = $db->getOne($sql);
         $job_type_id = $res['id'];
-        $sql = "INSERT INTO job_table (job_type_id,job_type,job_name,need_num,job_info) VALUES ('{$job_type_id}','{$job_type}','{$job_name}','{$need_num}','{$job_info}')";
+        $sql = "INSERT INTO job_table (job_type_id,job_type,job_name,need_num,job_info,job_edu,job_money) VALUES ('{$job_type_id}','{$job_type}','{$job_name}','{$need_num}','{$job_info}','{$job_edu}','{$job_money}')";
         $res = $db->execute($sql);
         // 查询 job_id
         $sql = "SELECT id FROM job_table WHERE job_name = '{$job_name}' AND job_type = '{$job_type}'";
@@ -151,8 +153,12 @@ if(isset($_GET['down_resume'])){
  
     $zip = new ZipArchive();
     $zip->open($filename,ZipArchive::CREATE);   //打开压缩包
+
+    $con = file_get_contents(iconv('utf-8', 'utf-8', $file));
+
     foreach($fileList as $file){
-        $zip->addFile($file,basename($file));   //向压缩包中添加文件
+        // $zip->addFromString( iconv('utf-8', 'utf-8', $file), $con);
+        $zip->addFile($file,basename($con));   //向压缩包中添加文件
     }
     $zip->close();  //关闭压缩包
 
@@ -172,8 +178,13 @@ if(isset($_GET['down_resume_person'])){
  
     $zip = new ZipArchive();
     $zip->open($filename,ZipArchive::CREATE);   //打开压缩包
+
+    $con = file_get_contents(iconv('utf-8', 'gbk', $file));
+
     foreach($fileList as $file){
-        $zip->addFile($file,basename($file));   //向压缩包中添加文件
+        // $zip->addFromString( iconv('utf-8', 'gbk', $file), $con);
+        $zip->addFile($file,basename($con));   //向压缩包中添加文件
+        // $zip->addFile($file,basename($file));   //向压缩包中添加文件
     }
     $zip->close();  //关闭压缩包
 

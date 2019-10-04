@@ -21,11 +21,25 @@
           </template>
         </at-input>
       </div>
+
+      <!-- 学历要求 -->
+      <div class="col-md-20">
+        <v-select class="mt10" v-model="job_edu" :options="['专科','本科','研究生','博士生','不限']" placeholder="学历要求.."></v-select>
+      </div>
+
+      <!-- 期望薪资 -->
+      <div class="col-md-20">
+        <at-input class="mt10" v-model="job_money" placeholder="人民币">
+          <template slot="prepend">
+            <span>期望薪资</span>
+          </template>
+        </at-input>
+      </div>
     </div>
     <div class="col-md-18">
       <!-- 详情 -->
       <at-textarea minRows="8" class="mt10" v-model="job_info" placeholder="请输入职位详情..."></at-textarea>
-      <at-button class="mt10 f_right" type="primary" @click="add_job()" :disabled="need_num == '' || job_type == '' || job_name == '' || job_info == ''">添加职位</at-button>
+      <at-button class="mt10 f_right" type="primary" @click="add_job()" :disabled="job_edu == '' || job_money == '' || need_num == '' || job_type == '' || job_name == '' || job_info == ''">添加职位</at-button>
     </div>
   </div>
 </template>
@@ -41,7 +55,9 @@ export default {
       job_type: "",
       job_name: "",
       need_num: 1,
-      job_info: ""
+      job_info: "",
+      job_edu: '',
+      job_money: ''
     };
   },
   methods: {
@@ -49,13 +65,15 @@ export default {
     add_job: function(){
       var _this = this;
       axios
-        .get("http://job.cc/api/job.php", {
+        .get("http://www.ycmbcd.com:6610/api/job.php", {
           params: {
             add_job: "add",
             job_type: _this.job_type,
             job_name: _this.job_name,
             need_num: _this.need_num,
-            job_info: _this.job_info
+            job_info: _this.job_info,
+            job_edu: _this.job_edu,
+            job_money: _this.job_money
           }
         })
         .then(function(res) {
@@ -64,6 +82,8 @@ export default {
             _this.job_name = '',
             _this.need_num = 1,
             _this.job_info = ''
+            _this.job_edu = ''
+            _this.job_money = ''
             const Toast = Vue.swal.mixin({
               toast: true,
               position: "top-end",
@@ -97,7 +117,7 @@ export default {
     get_type: function() {
       var _this = this;
       axios
-        .get("http://job.cc/api/type.php", {
+        .get("http://www.ycmbcd.com:6610/api/type.php", {
           params: {
             get_type: "get"
           }

@@ -47,20 +47,20 @@ export default {
   methods: {
     //   简历预览
     preview: function(resume_name){
-        window.open("http://job.cc/api/job.php?preview="+resume_name);
+        window.open("http://www.ycmbcd.com:6610/api/job.php?preview="+resume_name);
     },
       // 下载职位简历
     down_resume_person: function() {
       var _this = this;
       axios
-        .get("http://job.cc/api/job.php", {
+        .get("http://www.ycmbcd.com:6610/api/job.php", {
           params: {
             down_resume_person: _this.check_box
           }
         })
         .then(function(res) {
           if(res.data == 'ok'){
-            window.open('http://job.cc/api/../down/person.zip');
+            window.open('http://www.ycmbcd.com:6610/api/../down/person.zip');
           }
         })
         .catch(function(error) {
@@ -70,7 +70,7 @@ export default {
     ViewResume: function() {
       var _this = this;
       axios
-        .get("http://job.cc/api/job.php", {
+        .get("http://www.ycmbcd.com:6610/api/job.php", {
           params: {
             view_resume: '1'
           }
@@ -86,7 +86,7 @@ export default {
     down_resume_xlsx: function(){
       var _this = this;
       axios
-        .get("http://job.cc/api/job.php", {
+        .get("http://www.ycmbcd.com:6610/api/job.php", {
           params: {
             down_resume_xlsx: _this.check_box
           }
@@ -94,7 +94,7 @@ export default {
         .then(function(res) {
           console.log(res.data)
           if(res.data == 'ok'){
-            window.open('http://job.cc/api/../down/resume.xlsx');
+            window.open('http://www.ycmbcd.com:6610/api/../down/resume.xlsx');
           }
         })
         .catch(function(error) {

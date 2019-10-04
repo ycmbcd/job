@@ -9,7 +9,7 @@
         </div>
     </div>
     <div class="col-md-18 auto j_panel mt20">
-    <div class="j_login auto">
+    <div class="auto j_login">
         <div class="j_box">
             <div class="login_txt">您好，请登录 ..</div>
                 <at-input type="password" v-model="login_pwd" placeholder="请输入内容" append-button @keyup.enter="login()">
@@ -27,8 +27,8 @@
 .j_login {
   width: 220px;
   height: 120px;
-  margin-top:80px;
-  margin-bottom:180px;
+  margin-top:80px !important;
+  margin-bottom:180px !important;
   background:#f3f3f3;
   border: 1px solid #ddd;
   border-radius: 6px;
@@ -68,7 +68,7 @@ export default {
         login: function() {
             var _this = this;
             // axios.get("/api/login.php", {
-            axios.get("http://job.cc/api/login.php", {
+            axios.get("http://www.ycmbcd.com:6610/api/login.php", {
                 params: {
                     login: _this.login_pwd
                 }
@@ -85,7 +85,7 @@ export default {
                         type: 'success',
                         title: '管理员，欢迎使用！'
                     })
-                    _this.$router.replace('/JobAdmin')
+                    _this.$router.replace('/JobAdmin/AddJob')
                 }else if(res.data == 'ban'){
                     const Toast = Vue.swal.mixin({
                         toast: true,

@@ -3,7 +3,7 @@
     <div class="col-md-20 auto">
       <div class="bread">
         <at-breadcrumb separator=">">
-          <at-breadcrumb-item>首页 ></at-breadcrumb-item>
+          <at-breadcrumb-item>欢迎访问ABC招聘系统</at-breadcrumb-item>
         </at-breadcrumb>
       </div>
     </div>
@@ -23,7 +23,10 @@
                 target="_blank"
                 :to="{ name: 'JobShow', query: { job_id: item.id}}"
               >
-            <h1>{{item.id}}-{{item.job_name}}</h1>
+            <div class="f_left"><h1>{{item.id}}-{{item.job_name}}</h1></div>
+            <div class="f_right"><div class="job_money">{{item.job_edu}} <span class="c_red">{{item.job_money}}</span></div></div>
+            <div class="clear"></div>
+            
             <h3><i class="icon icon-radio"></i>{{item.job_type}}&nbsp;&nbsp;/&nbsp;&nbsp;<i class="icon icon-clock"></i>{{item.ct_time}}&nbsp;&nbsp;/&nbsp;&nbsp;<i class="icon icon-users"></i>{{item.need_num}}人</h3>
             <p>{{item.job_info}}</p>
         </router-link>
@@ -33,6 +36,8 @@
           <td width="10%" class="tagc">职位编号</td>
           <td>部门</td>
           <td>职位名</td>
+          <td class="tagc">薪资</td>
+          <td class="tagc">学历要求</td>
           <td class="tagc">招聘人数</td>
           <td width="20%">发布时间</td>
         </tr>
@@ -45,13 +50,16 @@
               :to="{ name: 'JobShow', query: { job_id: item.id}}"
             >{{item.job_name}}</router-link>
           </td>
+          <td class="tagc c_red">{{item.job_money}}</td>
+          <td class="tagc">{{item.job_edu}}</td>
           <td class="tagc">{{item.need_num}}</td>
           <td>{{item.ct_time}}</td>
         </tr>
       </table>
-      <!-- <div class="f_right mt20">
-      <at-pagination :total="60"></at-pagination>
-      </div>-->
+
+      <div class="f_right mt20">
+        <at-pagination :total="page_total"></at-pagination>
+      </div>
       <div class="clear"></div>
     </div>
   </div>
@@ -66,7 +74,8 @@ export default {
   data() {
     return {
       all_jobs: [],
-      show_type: 1
+      show_type: 1,
+      page_total: 0
     };
   },
   mounted: function() {
@@ -77,7 +86,7 @@ export default {
     get_jobs: function() {
       var _this = this;
       axios
-        .get("http://job.cc/api/job.php", {
+        .get("http://www.ycmbcd.com:6610/api/job.php", {
           params: {
             get_jobs: "get"
           }
@@ -93,6 +102,11 @@ export default {
 };
 </script>
 <style>
+.job_money{
+  font-size: 26px;
+  font-weight: bold;
+  color: #888;
+}
 .pointer{
   cursor: pointer;
 }

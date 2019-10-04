@@ -100,8 +100,8 @@
                             <td>毕业学校</td><td>{{ u_birthday }}</td>
                         </tr>
                         <tr>
-                            <td>专业</td><td>{{ u_email }}</td>
-                            <td>学位</td><td>{{ u_birthday }}</td>
+                            <td>专业</td><td>{{ u_major }}</td>
+                            <td>学位</td><td>{{ u_education }}</td>
                         </tr>
                         <tr>
                             <td colspan="4">
@@ -162,7 +162,7 @@ export default {
             }
             
             axios
-            .post("http://job.cc/api/job.php", Qs.stringify(data)).then(function(res){
+            .post("http://www.ycmbcd.com:6610/api/job.php", Qs.stringify(data)).then(function(res){
                 console.log(res)
                 // console.log(res.data)
             }).catch(function(error) {
@@ -178,7 +178,7 @@ export default {
     send_resume: function() {
       var _this = this;
       axios
-        .get("http://job.cc/api/job.php", {
+        .get("http://www.ycmbcd.com:6610/api/job.php", {
           params: {
             send_resume: "send",
             job_id: _this.$route.query.job_id,
@@ -235,7 +235,7 @@ export default {
   padding: 60px;
   background: #FFF;
   margin: 20px;
-  margin-top: 60px;
+  margin-top: 30px;
 }
 .t_resume {
   width: 100%;

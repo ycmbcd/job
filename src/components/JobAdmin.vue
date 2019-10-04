@@ -64,7 +64,7 @@ export default {
     logout: function() {
       var _this = this;
       axios
-        .get("http://job.cc/api/login.php", {
+        .get("http://www.ycmbcd.com:6610/api/login.php", {
           params: {
             logout: "bye"
           }
@@ -83,7 +83,7 @@ export default {
       var _this = this;
       // axios.get("/api/login.php", {
       axios
-        .get("http://job.cc/api/login.php", {
+        .get("http://www.ycmbcd.com:6610/api/login.php", {
           params: {
             check_login: "check"
           }

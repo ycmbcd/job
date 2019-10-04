@@ -57,7 +57,7 @@ export default {
     del_job(id){
       var _this = this;
       axios
-        .get("http://job.cc/api/job.php", {
+        .get("http://www.ycmbcd.com:6610/api/job.php", {
           params: {
             del_job: id
           }
@@ -91,14 +91,14 @@ export default {
     down_resume: function() {
       var _this = this;
       axios
-        .get("http://job.cc/api/job.php", {
+        .get("http://www.ycmbcd.com:6610/api/job.php", {
           params: {
             down_resume: _this.check_box
           }
         })
         .then(function(res) {
           if(res.data == 'ok'){
-            window.open('http://job.cc/api/../down/download.zip');
+            window.open('http://www.ycmbcd.com:6610/down/download.zip');
           }
         })
         .catch(function(error) {
@@ -109,7 +109,7 @@ export default {
     get_jobs: function() {
       var _this = this;
       axios
-        .get("http://job.cc/api/job.php", {
+        .get("http://www.ycmbcd.com:6610/api/job.php", {
           params: {
             get_jobs: "get"
           }
@@ -145,7 +145,7 @@ export default {
   padding-right: 0px;
 }
 .at-modal {
-  width: 300px !important;
+  width: 300px;
 }
 .at-checkbox{
   margin-left: 8px;

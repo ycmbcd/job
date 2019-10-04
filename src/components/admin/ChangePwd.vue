@@ -26,7 +26,7 @@ export default {
         // 退出系统
         logout: function() {
         var _this = this;
-        axios.get("http://job.cc/api/login.php", {
+        axios.get("http://www.ycmbcd.com:6610/api/login.php", {
                 params: {
                     logout: "bye"
                 }
@@ -44,7 +44,7 @@ export default {
         change_pwd: function() {
             var _this = this;
             if(_this.n_pwd == _this.r_pwd && _this.n_pwd !== ''){
-                axios.get("http://job.cc/api/login.php", {
+                axios.get("http://www.ycmbcd.com:6610/api/login.php", {
                     params: {
                         change_pwd: _this.n_pwd,
                         o_pwd: _this.o_pwd

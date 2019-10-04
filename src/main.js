@@ -7,6 +7,7 @@ import AtUI from 'at-ui'
 import 'at-ui-style'    // 引入组件样式
 import VueI18n from 'vue-i18n'
 import zhLocale from 'at-ui/dist/locale/zh-CN'
+import '../static/css.css'
 
 import VueSweetalert2 from 'vue-sweetalert2';
 import 'sweetalert2/dist/sweetalert2.min.css';
