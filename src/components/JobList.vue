@@ -138,15 +138,12 @@ export default {
   padding: 30px;
 }
 .job_item:hover{
-  animation: itemh .7s;
+  transition: background .3s;
   box-shadow: 0 1px 10px 1px #dedede;
   cursor: pointer;
+  background: #f6f6f6;
 }
-@keyframes itemh
-{
-0%   {background: #f1f4ff;}
-100% {background: #FFF;}
-}
+
 .job_item h1{
   font-size: 26px;
 }

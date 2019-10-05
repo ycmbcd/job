@@ -132,3 +132,9 @@ body.swal2-toast-shown .swal2-container.swal2-top-right {
     transition: opacity .2s;
     opacity: 0;
 }
+.at-breadcrumb__item:last-child{
+    color:#3d6eb7;
+}
+.at-breadcrumb{
+    font-weight: bold;
+}

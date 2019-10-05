@@ -24,7 +24,7 @@
 }
 .j_top{
     height: 40px;
-    background: #aab0b9;
+    background: #3d6eb7;
     font-weight: bold;
     color: #FFF;
     line-height: 40px;

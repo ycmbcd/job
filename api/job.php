@@ -148,6 +148,7 @@ if(isset($_GET['down_resume'])){
     foreach($res as $val){
         array_push($fileList, "../down/jobs/".$val['resume_name'].".png");
     }
+    unlink("../down/download.zip");
  
     $filename = "../down/download.zip"; // 压缩包所在的位置路径
  
@@ -173,7 +174,7 @@ if(isset($_GET['down_resume_person'])){
     foreach($down_resume as $val){
         array_push($fileList, "../down/jobs/".$val.".png");
     }
- 
+    unlink("../down/person.zip");
     $filename = "../down/person.zip"; // 压缩包所在的位置路径
  
     $zip = new ZipArchive();
